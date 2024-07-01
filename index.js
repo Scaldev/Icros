@@ -33,21 +33,17 @@ for (const interactionName of interactionFolderName) {
 
 // Deploying commands #####################################################################################################
 
-/*
 const rest = new REST({ version: '10' }).setToken(token);
 
 (async () => {
 	try {
 		console.log(`Started refreshing ${commands.length} application (/) commands.`);
-		await rest.put( Routes.applicationGuildCommands("1000403129315098744", "964083665766334504"), { body: commands } );  // clientId, testServerId [Académie]
-		await rest.put( Routes.applicationGuildCommands("1000403129315098744", "1041090354050498721"), { body: commands } );  // clientId, testServerId [Party]
-		await rest.put( Routes.applicationGuildCommands("1000403129315098744", "1041633605518110770"), { body: commands } );  // clientId, testServerId [Help center]
+		await rest.put( Routes.applicationGuildCommands("603997312250937354", "463292621922762782"), { body: commands } );  // clientId, testServerId [Académie]
 		console.log(`Successfully reloaded the application (/) commands.`);
 	} catch (error) {
 		console.error(error);
 	}
 })();
-*/
 
 // Event handling ########################################################################################################
 

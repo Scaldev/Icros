@@ -1,6 +1,7 @@
 const mysql = require("mysql2");
 const util = require('util');
 
+/*
 const { mysql_settings } = require('../database/config.json');
 
 const db = mysql.createPool(mysql_settings);
@@ -18,3 +19,5 @@ module.exports = {
     },
 
 };
+
+*/
