@@ -1,16 +1,24 @@
 {
   "name": "icros",
   "version": "1.0.0",
+  "type": "module",
   "description": "A Discord bot for databases.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npx tsx index.ts --inspect-brk"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "discord.js": "^14.15.3",
     "fs": "^0.0.1-security",
-    "mysql2": "^3.10.2"
+    "mysql2": "^3.10.2",
+    "tsconfig-paths": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.1",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.17.0",
+    "typescript": "^5.5.4"
   }
 }
