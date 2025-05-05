@@ -11,8 +11,6 @@ async function create_board(server_id: string, board_id: number, cooldown: numbe
         end_date = `'${new Date(now.getTime() + end * 60000)}'`;
     }
 
-    console.log(end_date);
-
     await query(`INSERT INTO PlaceBoards(server_id, board_id, cooldown, end) VALUES('${server_id}', ${board_id}, ${cooldown}, ${end_date});`);
 
     let input = "";
@@ -29,6 +27,24 @@ async function create_board(server_id: string, board_id: number, cooldown: numbe
 
     return { content: `Le plateau n°${board_id} vient d'être créé.` };
 
+
+}
+
+async function update_board(server_id: string, board_id: number | null, cooldown: number, end: number | null) {
+
+    if (board_id == null) {
+        return { content: "Id non-spécifié.", ephemeral: true };
+    }
+
+    let end_date = null;
+    if (end != undefined) {
+        const now = new Date();
+        end_date = `'${new Date(now.getTime() + end * 60000)}'`;
+    }
+
+    await query(`UPDATE PlaceBoards SET cooldown = ${cooldown}, end = ${end_date} WHERE server_id = '${server_id}' AND board_id = ${board_id};`);
+
+    return { content: `Le plateau n°${board_id} a bien été modifié.` };
 
 }
 
@@ -115,6 +131,17 @@ export async function execute(interaction: ChatInputCommandInteraction) {
             const rows = await query(`SELECT * FROM PlaceBoards WHERE server_id = '${interaction.guild.id}';`);
 
             reply = await create_board(interaction.guild.id, rows.length + 1, cooldown, end);
+            await interaction.reply(reply);
+
+            break;
+
+        case 'edit':
+
+            const update_id = interaction.options.getInteger('id') || null;
+            const update_cooldown = interaction.options.getInteger('cooldown') || 1 * 60;
+            const update_end = interaction.options.getInteger('end') || null;
+
+            reply = await update_board(interaction.guild.id, update_id, update_cooldown, update_end);
             await interaction.reply(reply);
 
             break;

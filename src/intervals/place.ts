@@ -84,7 +84,7 @@ export async function execute() {
             if (channel?.isTextBased()) {
                 
             const text_board_link = `\n-# Plateau n°**${square_data.board_id}** : https://discord.com/channels/${board.server_id}/${board.channel_id}/${board.message_id}`;
-                await channel.send(action + text_board_link);
+                await channel.send({ content:action + text_board_link, allowedMentions: { parse: [] }});
             }
 
             board.add_action(action);

@@ -38,7 +38,7 @@ export async function execute(interaction: ButtonInteraction) {
     const previous_player = board.squares[square_id].player;
 
     const NO_TEAM_EMOJI = "<:blank:1275406305271742527>";
-    let action = `**[${previous_player?.emoji || NO_TEAM_EMOJI} ↦ ${player.emoji}]** - <@!${player.id}> a pris la case n°${square_id}`;
+    let action = `**[${previous_player?.emoji || NO_TEAM_EMOJI} ↦ ${player.emoji}]** - <@!${player.id}> a pris la case n°**${square_id}**`;
 
     if (player.cooldown != null) {
         return interaction.followUp({ content: `${interaction.user}, tu as déjà pris une case adverse récemment. Fin du cooldown : <t:${Math.round(player.cooldown.getTime() / 1000)}:R>.`, ephemeral: true });
@@ -64,7 +64,7 @@ export async function execute(interaction: ButtonInteraction) {
         if (channel?.isTextBased()) {
 
             const text_board_link = `\n-# Plateau n°**${board_id}** : https://discord.com/channels/${server_id}/${interaction.channel.id}/${interaction.message.id}`;
-            const message = await channel.send({ content: action + text_board_link });
+            const message = await channel.send({ content: action + text_board_link, allowedMentions: { parse: [] }});
 
             /*
             setTimeout(async () => {

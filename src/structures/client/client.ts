@@ -71,7 +71,7 @@ for (let interaction_type of interaction_folder) {
 
 const rest = new REST({ version: '10' }).setToken(token);
 
-const client_id = "603997312250937354";
+const client_id = "920762905937444896";
 const server_id = "463292621922762782";
 
 // Deleting commands
