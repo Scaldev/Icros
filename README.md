@@ -3,7 +3,7 @@
 Icros is a server-specific, general-purpose Discord app offering:
 - a **Profile** system: `/profile`, `/aboutme`,  `/daily`, `leaderboard`, `/give`, `/edit` ;
 - a **Shop** system: `/shop`, `roles` ;
-- a **r/place-style game:ùù `/place`.
+- a **r/place-style game:** `/place`.
 
 The following sections describe each feature in more detail.
 
